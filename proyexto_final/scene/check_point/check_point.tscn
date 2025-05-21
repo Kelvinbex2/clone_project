@@ -1,0 +1,86 @@
+[gd_scene load_steps=11 format=3 uid="uid://cnq6eklwqghx3"]
+
+[ext_resource type="Script" uid="uid://4w0erhvlw4nx" path="res://scene/check_point/check_point.gd" id="1_o4wu2"]
+[ext_resource type="Texture2D" uid="uid://fgb6ep6nbmkv" path="res://Assets/Background ui/flag animation.png" id="2_gjbtd"]
+[ext_resource type="AudioStream" uid="uid://je2cilh13k2a" path="res://Assets/dialog/voice_blip.wav" id="3_h1yi3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h1yi3"]
+atlas = ExtResource("2_gjbtd")
+region = Rect2(0, 0, 60, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gtl2e"]
+atlas = ExtResource("2_gjbtd")
+region = Rect2(60, 0, 60, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_okbwe"]
+atlas = ExtResource("2_gjbtd")
+region = Rect2(120, 0, 60, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3vbq5"]
+atlas = ExtResource("2_gjbtd")
+region = Rect2(180, 0, 60, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qvajj"]
+atlas = ExtResource("2_gjbtd")
+region = Rect2(240, 0, 60, 60)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mv3ob"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h1yi3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gtl2e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_okbwe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3vbq5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qvajj")
+}],
+"loop": true,
+"name": &"flag",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2tx7o"]
+size = Vector2(12, 47)
+
+[node name="CheckPoint" type="Area2D"]
+script = ExtResource("1_o4wu2")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(17, 0)
+sprite_frames = SubResource("SpriteFrames_mv3ob")
+animation = &"flag"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-4, 3.5)
+shape = SubResource("RectangleShape2D_2tx7o")
+
+[node name="Respawn" type="Marker2D" parent="."]
+position = Vector2(30, 7)
+
+[node name="AudioPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_h1yi3")
+volume_db = 24.0
+bus = &"Sfx"
+
+[node name="Particles" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 10
+one_shot = true
+explosiveness = 1.0
+direction = Vector2(0, -1)
+spread = 20.0
+gravity = Vector2(0, 200)
+initial_velocity_min = 100.0
+initial_velocity_max = 150.0
+damping_min = 1.0
+damping_max = 1.0
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

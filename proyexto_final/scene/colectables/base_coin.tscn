@@ -1,0 +1,90 @@
+[gd_scene load_steps=13 format=3 uid="uid://6yhw0wflplh8"]
+
+[ext_resource type="Script" uid="uid://dvf3aoh6a2rq2" path="res://scene/colectables/base_coin.gd" id="1_635nk"]
+[ext_resource type="Texture2D" uid="uid://8wtfi1rod7v7" path="res://Assets/character/coins-chests-etc-2-0-noborders.png" id="2_635nk"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_635nk"]
+rough = true
+bounce = 0.4
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k1wwj"]
+atlas = ExtResource("2_635nk")
+region = Rect2(400, 225, 15, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_feqdx"]
+atlas = ExtResource("2_635nk")
+region = Rect2(416, 225, 15, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yd7r6"]
+atlas = ExtResource("2_635nk")
+region = Rect2(432, 225, 15, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ytkcd"]
+atlas = ExtResource("2_635nk")
+region = Rect2(448, 225, 15, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8xomu"]
+atlas = ExtResource("2_635nk")
+region = Rect2(464, 225, 15, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j55t7"]
+atlas = ExtResource("2_635nk")
+region = Rect2(480, 225, 15, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8xomu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k1wwj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_feqdx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yd7r6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ytkcd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8xomu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j55t7")
+}],
+"loop": true,
+"name": &"oro",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_j55t7"]
+radius = 8.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_635nk"]
+radius = 9.0
+
+[node name="BaseCoin" type="RigidBody2D" groups=["collectable"]]
+collision_layer = 8
+collision_mask = 11
+physics_material_override = SubResource("PhysicsMaterial_635nk")
+lock_rotation = true
+angular_velocity = 0.000349066
+angular_damp = 0.8
+script = ExtResource("1_635nk")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, 5)
+sprite_frames = SubResource("SpriteFrames_8xomu")
+animation = &"oro"
+autoplay = "oro"
+frame_progress = 0.253951
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_j55t7")
+
+[node name="Area2D" type="Area2D" parent="." groups=["collectable"]]
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_635nk")

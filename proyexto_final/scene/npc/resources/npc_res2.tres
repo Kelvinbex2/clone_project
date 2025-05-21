@@ -1,0 +1,103 @@
+[gd_resource type="Resource" script_class="NpcResource" load_steps=16 format=3 uid="uid://bqhhebra0fbkl"]
+
+[ext_resource type="Texture2D" uid="uid://8kk3tc6xn2h0" path="res://Assets/character/npc/npc_portrait_01.png" id="1_jv75u"]
+[ext_resource type="Script" uid="uid://bd6jrugj8h3ur" path="res://scene/npc/npc_resource.gd" id="2_xuc2u"]
+[ext_resource type="Texture2D" uid="uid://p2js25a84u72" path="res://Assets/character/GandalfHardcore Warrior.png" id="3_jv75u"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xuc2u"]
+atlas = ExtResource("3_jv75u")
+region = Rect2(80, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oovvv"]
+atlas = ExtResource("3_jv75u")
+region = Rect2(160, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8051v"]
+atlas = ExtResource("3_jv75u")
+region = Rect2(240, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3julu"]
+atlas = ExtResource("3_jv75u")
+region = Rect2(320, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uf1py"]
+atlas = ExtResource("3_jv75u")
+region = Rect2(80, 64, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i724n"]
+atlas = ExtResource("3_jv75u")
+region = Rect2(160, 64, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1488l"]
+atlas = ExtResource("3_jv75u")
+region = Rect2(240, 64, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t6gw6"]
+atlas = ExtResource("3_jv75u")
+region = Rect2(320, 64, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v2xhi"]
+atlas = ExtResource("3_jv75u")
+region = Rect2(400, 64, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xjsip"]
+atlas = ExtResource("3_jv75u")
+region = Rect2(480, 64, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eumvf"]
+atlas = ExtResource("3_jv75u")
+region = Rect2(560, 64, 80, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_x7g52"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xuc2u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oovvv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8051v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3julu")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uf1py")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i724n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1488l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t6gw6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v2xhi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xjsip")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eumvf")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[resource]
+script = ExtResource("2_xuc2u")
+npc_name = "Jesus"
+sprite_frames = SubResource("SpriteFrames_x7g52")
+potrait = ExtResource("1_jv75u")
+dialogo_audio = 1.0
+metadata/_custom_type_script = "uid://bd6jrugj8h3ur"
